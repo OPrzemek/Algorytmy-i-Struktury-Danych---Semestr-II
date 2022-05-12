@@ -1,0 +1,1 @@
+# Struktura worka (graf)
