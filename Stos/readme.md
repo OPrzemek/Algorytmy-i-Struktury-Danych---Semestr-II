@@ -1,1 +1,1 @@
-#Struktura Stosu
+# Struktura Stosu
