@@ -92,12 +92,24 @@ public class Graf {
         }
         System.out.println();
 
+        //Depth-First Search
         graf.dfs(graf, 0);
         for(int i = 0; i < graf.V; i++)
             System.out.println(i + ") " + graf.oznakowane[i] + "  " + graf.krawedzDo[i]);
         System.out.println();
 
         int sciezkaDo = 5;
+        for(int k = sciezkaDo; k != graf.s; k = graf.krawedzDo[k])
+            System.out.println(" -> " + k);
+        System.out.println(" -> " + graf.s);
+        System.out.println();
+        
+        //Breadth-First Search
+        graf.bfs(graf, 0);
+        for(int i = 0; i < graf.V; i++)
+            System.out.println(i + ") " + graf.oznakowane[i] + "  " + graf.krawedzDo[i]);
+        System.out.println();
+
         for(int k = sciezkaDo; k != graf.s; k = graf.krawedzDo[k])
             System.out.println(" -> " + k);
         System.out.println(" -> " + graf.s);
