@@ -1,2 +1,2 @@
-#Struktura listy
+# Struktura listy
 Zawiera strukturę kolejki.
