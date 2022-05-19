@@ -1,7 +1,7 @@
 package com.company;
 
 @SuppressWarnings({"SpellCheckingInspection","NonAsciiCharacters"})
-public class GrafW {
+public class GrafW { //Graf ważony
     final int V;
     private int E;
     public Worek<Krawedz>[] sasiedzi;
@@ -40,7 +40,12 @@ public class GrafW {
         ważonyGraf.dodajKrawedz(new Krawedz(4,5,0.35));
         ważonyGraf.dodajKrawedz(new Krawedz(5,7,0.28));
 
-        Worek<Krawedz> worek = ważonyGraf.sasiedzi[0];
-        for(Krawedz i : worek) System.out.println(i);
+        Worek<Krawedz> worek;
+        for(int i = 0; i < 8; i++){
+            System.out.println("Sasiedzi " + i + ":");
+            worek = ważonyGraf.sasiedzi[i];
+            for(Krawedz j : worek) System.out.println(j);
+        }
+
     }
 }
