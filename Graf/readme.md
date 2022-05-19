@@ -1,2 +1,2 @@
 # Struktura grafu
-Zawiera także strukturę kolejki, klasę Krawędź oraz Graf Ważony
+Zawiera także strukturę kolejki, grafu ważonego oraz klasę Krawędź
