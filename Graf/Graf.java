@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Iterator;
 
-@SuppressWarnings({"NonAsciiCharacters", "SpellCheckingInspection"})
+@SuppressWarnings({"SpellCheckingInspection"})
 public class Graf {
     private final int V;
     private int E;
@@ -67,22 +67,19 @@ public class Graf {
     }
 
     public static void main(String[] args) {
-        Graf graf = new Graf(6);
-
-        graf.dodajKrawedz(0,5);
-        graf.dodajKrawedz(2,4);
-        graf.dodajKrawedz(2,3);
-        graf.dodajKrawedz(1,2);
+        Graf graf = new Graf(10);
+        //CZESC TRZECIA CWICZEN
         graf.dodajKrawedz(0,1);
+        graf.dodajKrawedz(0,3);
+        graf.dodajKrawedz(0,4);
         graf.dodajKrawedz(3,4);
-        graf.dodajKrawedz(3,5);
-        graf.dodajKrawedz(0,2);
+        graf.dodajKrawedz(3,2);
+        graf.dodajKrawedz(2,5);
+        graf.dodajKrawedz(4,8);
+        graf.dodajKrawedz(8,9);
+        graf.dodajKrawedz(4,7);
+        graf.dodajKrawedz(7,6);
 
-//        int s = 0;
-//        System.out.print("Sasiedzi liczby " + s + ": ");
-//        for(Integer sasiad: graf.sasiedzi[s]){
-//            System.out.print(sasiad + " ");
-//        }
         Iterator<Integer> it;
         for(int i = 0; i < graf.sasiedzi.length; i++){
             it = graf.sasiedzi[i].iterator();
@@ -92,26 +89,102 @@ public class Graf {
         }
         System.out.println();
 
-        //Depth-First Search
-        graf.dfs(graf, 0);
-        for(int i = 0; i < graf.V; i++)
-            System.out.println(i + ") " + graf.oznakowane[i] + "  " + graf.krawedzDo[i]);
-        System.out.println();
+        graf.bfs(graf,0);
 
-        int sciezkaDo = 5;
-        for(int k = sciezkaDo; k != graf.s; k = graf.krawedzDo[k])
-            System.out.println(" -> " + k);
-        System.out.println(" -> " + graf.s);
-        System.out.println();
-        
-        //Breadth-First Search
-        graf.bfs(graf, 0);
-        for(int i = 0; i < graf.V; i++)
-            System.out.println(i + ") " + graf.oznakowane[i] + "  " + graf.krawedzDo[i]);
-        System.out.println();
+        Iterable<Integer> wynik = graf.sciezkaDo(5);
+        System.out.println("Czy istnieje droga do wierzcholka 5?\nOdpowiedz: " + graf.jestSciezkaDo(5));
+        if(graf.jestSciezkaDo(5)){
+            System.out.println("\nSprawdzenie:");
+            for(Integer i : wynik) System.out.print(" -> " + i);
+        }
+        System.out.println("\n");
+        wynik = graf.sciezkaDo(6);
+        System.out.println("Czy istnieje droga do wierzcholka 6?\nOdpowiedz: " + graf.jestSciezkaDo(6));
+        if(graf.jestSciezkaDo(6)){
+            System.out.println("\nSprawdzenie:");
+            for(Integer i : wynik) System.out.print(" -> " + i);
+        }
 
-        for(int k = sciezkaDo; k != graf.s; k = graf.krawedzDo[k])
-            System.out.println(" -> " + k);
-        System.out.println(" -> " + graf.s);
+
+
+        //CZESC DRUGA CWICZEN
+//        graf.dodajKrawedz(0,1);
+//        graf.dodajKrawedz(1,2);
+//        graf.dodajKrawedz(2,5);
+//        graf.dodajKrawedz(0,3);
+//        graf.dodajKrawedz(0,4);
+//        graf.dodajKrawedz(4,8);
+//        graf.dodajKrawedz(8,9);
+//        graf.dodajKrawedz(4,7);
+//        graf.dodajKrawedz(7,6);
+//
+//        Iterator<Integer> it;
+//        for(int i = 0; i < graf.sasiedzi.length; i++){
+//            it = graf.sasiedzi[i].iterator();
+//            System.out.print("Nastepniki wierzchołka " + i + ":  ");
+//            while(it.hasNext()) System.out.print(it.next() + "  ");
+//            System.out.println();
+//        }
+//        System.out.println();
+//
+//        graf.dfs(graf,0);
+//
+//        System.out.println("Czy istnieje droga do wierzcholka 5?\nOdpowiedz: " + graf.jestSciezkaDo(5));
+//        if(graf.jestSciezkaDo(5)){
+//            System.out.println("\nSprawdzenie:");
+//            for(Integer i : graf.sciezkaDo(5)) System.out.print(" -> " + i);
+//        }
+//        System.out.println("\n");
+//
+//        System.out.println("Sciezka do 6:");
+//        Iterable<Integer> wynik =graf.sciezkaDo(6);
+//        for(Integer i : wynik) System.out.print(" -> " + i);
+
+        //CZESC PIERWSZA CWICZEN
+//        graf.dodajKrawedz(0,5);
+//        graf.dodajKrawedz(2,4);
+//        graf.dodajKrawedz(2,3);
+//        graf.dodajKrawedz(1,2);
+//        graf.dodajKrawedz(0,1);
+//        graf.dodajKrawedz(3,4);
+//        graf.dodajKrawedz(3,5);
+//        graf.dodajKrawedz(0,2);
+
+//        int s = 0;
+//        System.out.print("Sasiedzi liczby " + s + ": ");
+//        for(Integer sasiad: graf.sasiedzi[s]){
+//            System.out.print(sasiad + " ");
+//        }
+
+//        Iterator<Integer> it;
+//        for(int i = 0; i < graf.sasiedzi.length; i++){
+//            it = graf.sasiedzi[i].iterator();
+//            System.out.print("Nastepniki wierzchołka " + i + ":  ");
+//            while(it.hasNext()) System.out.print(it.next() + "  ");
+//            System.out.println();
+//        }
+//        System.out.println();
+//
+//        //Depth-First Search
+//        graf.dfs(graf, 0);
+//        for(int i = 0; i < graf.V; i++)
+//            System.out.println(i + ") " + graf.oznakowane[i] + "  " + graf.krawedzDo[i]);
+//        System.out.println();
+//
+//        int sciezkaDo = 5;
+//        for(int k = sciezkaDo; k != graf.s; k = graf.krawedzDo[k])
+//            System.out.println(" -> " + k);
+//        System.out.println(" -> " + graf.s);
+//        System.out.println();
+//
+//        //Breadth-First Search
+//        graf.bfs(graf, 0);
+//        for(int i = 0; i < graf.V; i++)
+//            System.out.println(i + ") " + graf.oznakowane[i] + "  " + graf.krawedzDo[i]);
+//        System.out.println();
+//
+//        for(int k = sciezkaDo; k != graf.s; k = graf.krawedzDo[k])
+//            System.out.println(" -> " + k);
+//        System.out.println(" -> " + graf.s);
     }
 }
