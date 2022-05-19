@@ -1,2 +1,2 @@
 # Struktura grafu
-Zawiera także strukturę worka
+Zawiera także strukturę kolejki
