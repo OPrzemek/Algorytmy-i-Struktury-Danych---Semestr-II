@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Iterator;
 
-@SuppressWarnings({"NonAsciiCharacters", "SpellCheckingInspection"})
+@SuppressWarnings({"SpellCheckingInspection"})
 public class Worek<Item> implements Iterable<Item> {
     private Wezel pierwszy;
     private class Wezel{
