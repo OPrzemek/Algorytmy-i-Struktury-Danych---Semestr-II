@@ -4,15 +4,10 @@ import java.util.ArrayList;
 
 public class MinSTree {
     public Krawedz[] krawedzDo;
-
     public double[] odlegloscDo;
-
     public boolean[] oznaczone;
-
     public double minWag;
-
     public int pozycjaMin;
-
     boolean czyPusta;
 
     GrafW graf;
@@ -22,31 +17,31 @@ public class MinSTree {
         krawedzDo = new Krawedz[v];
         odlegloscDo = new double[v];
         oznaczone = new boolean[v];
-        for(int k=0;k<v;k++)
-            odlegloscDo[k]=Double.POSITIVE_INFINITY;
-        pozycjaMin=-1;
+        for(int k = 0; k < v; k++)
+            odlegloscDo[k] = Double.POSITIVE_INFINITY;
+        pozycjaMin = -1;
     }
 
     public void badajMinimum(){
-        pozycjaMin=-1;
+        pozycjaMin = -1;
         int i;
-        for(i=0;i<graf.V;i++)
+        for(i = 0; i < graf.V; i++)
         {
-            if (pq.get(i)!=null)
+            if(pq.get(i) != null)
             {
                 pozycjaMin=i;
                 break;
             }
         }
-        czyPusta=pozycjaMin==-1;
+        czyPusta = pozycjaMin == -1;
         if(czyPusta) return;
         minWag = pq.get(i);
-        for (int ii =i+1; ii< graf.V; ii++)
+        for(int ii = i+1; ii < graf.V; ii++)
         {
-            if (pq.get(ii)!=null && minWag>pq.get(ii))
+            if(pq.get(ii) != null && minWag > pq.get(ii))
             {
-                minWag=pq.get(ii);
-                pozycjaMin=ii;
+                minWag = pq.get(ii);
+                pozycjaMin = ii;
             }
         }
         pq.set(pozycjaMin, null);
@@ -72,34 +67,35 @@ public class MinSTree {
         obiektST.graf.dodajKrawedz(new Krawedz(4,7,0.37));
         obiektST.graf.dodajKrawedz(new Krawedz(4,5,0.35));
         obiektST.graf.dodajKrawedz(new Krawedz(5,7,0.28));
-        for (int i=0;i<ileWierz;i++)
+
+        for(int i = 0; i < ileWierz; i++)
             obiektST.pq.add(null);
-        int v=0;
-        obiektST.odlegloscDo[0]=0.0;
+        int v = 0;
+        obiektST.odlegloscDo[0] = 0.0;
         obiektST.pq.add(0, 0.0);
         double poprz;
-        while (true) {
+        while(true) {
             obiektST.badajMinimum();
-            if(obiektST.pozycjaMin==-1) break;
-            v=obiektST.pozycjaMin;
-            System.out.println("\nbadanie "+v+"\n");
-            obiektST.oznaczone[v]=true;
-            for (Krawedz e: obiektST.graf.sasiedzi[v]){
+            if(obiektST.pozycjaMin == -1) break;
+            v = obiektST.pozycjaMin;
+            System.out.println("\nbadanie " + v + "\n");
+            obiektST.oznaczone[v] = true;
+            for(Krawedz e: obiektST.graf.sasiedzi[v]){
                 int w = e.drugi(v);
-                System.out.println("krawedz "+v+" -> "+ w + " " + e.waga());
-                if (obiektST.oznaczone[w]) {System.out.println(w + "już onaczone"); continue;}
-                if (e.waga()< obiektST.odlegloscDo[w]){
-                    obiektST.krawedzDo[w]=e;
-                    poprz= obiektST.odlegloscDo[w];
-                    obiektST.odlegloscDo[w]=e.waga();
-                    obiektST.pq.set(w,obiektST.odlegloscDo[w]);
+                System.out.println("krawedz " + v + " -> " + w + " " + e.waga());
+                if(obiektST.oznaczone[w]) { System.out.println(w + "już onaczone"); continue; }
+                if(e.waga() < obiektST.odlegloscDo[w]){
+                    obiektST.krawedzDo[w] = e;
+                    poprz = obiektST.odlegloscDo[w];
+                    obiektST.odlegloscDo[w] = e.waga();
+                    obiektST.pq.set(w, obiektST.odlegloscDo[w]);
                     System.out.println(w + " modyfikacja wagi "+ e.waga()+ " jest mniejsze od " + poprz);
                 }
-                else System.out.println(v+" "+w+ " " + e.waga() + " nie jest mniejsze od " + obiektST.odlegloscDo[w]);
+                else System.out.println(v + " " + w + " " + e.waga() + " nie jest mniejsze od " + obiektST.odlegloscDo[w]);
             }
         }
         System.out.println(" \nRozwiazanie: ");
-        for (int i=1;i<ileWierz;i++)
+        for(int i = 1; i < ileWierz; i++)
             System.out.println(obiektST.krawedzDo[i]);
         obiektST.badajMinimum();
     }
